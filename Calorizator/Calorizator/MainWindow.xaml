@@ -9,20 +9,27 @@
     <Grid Margin="0,0,2,0">
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="191" Margin="244,31,0,0" VerticalAlignment="Top" Width="426" RenderTransformOrigin="0.5,0.5" MinColumnWidth="0" SelectionChanged="dataGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="25" Header="№"/>
-                <DataGridTextColumn Width="150" Header="Продукт"/>
-                <DataGridTextColumn Width="50" Header="Вес, гр"/>
-                <DataGridTextColumn Width="45" Header="Белки"/>
-                <DataGridTextColumn Width="45" Header="Жиры"/>
-                <DataGridTextColumn Width="65" Header="Углеводы"/>
-                <DataGridTextColumn Width="45" Header="Ккал"/>
+
+
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="button" Content="Добавить продукт" HorizontalAlignment="Left" Height="28" Margin="76,194,0,0" VerticalAlignment="Top" Width="122"/>
-        <Label x:Name="label" Content="Итого:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,228,0,0"/>
-        <Label x:Name="label_Copy" Content="Итого на 100 гр:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,259,0,0"/>
-        <Label x:Name="label1" Content="" HorizontalAlignment="Left" Height="15" Margin="302,234,0,0" VerticalAlignment="Top" Width="111"/>
-        <Label x:Name="label1_Copy" Content="" HorizontalAlignment="Left" Height="15" Margin="353,265,0,0" VerticalAlignment="Top" Width="111"/>
+        <Button x:Name="button" Content="Добавить продукт" HorizontalAlignment="Left" Height="28" Margin="76,286,0,0" VerticalAlignment="Top" Width="122" Click="button_Click"/>
+        <Label x:Name="label" Content="Итого:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,231,0,0"/>
+        <Label x:Name="label_i" Content="" HorizontalAlignment="Left" Height="34" Margin="302,231,0,0" VerticalAlignment="Top" Width="368"/>
+        <Label x:Name="label_Copy1" Content="Выберите продукт" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,118,0,0"/>
+        <ComboBox x:Name="comboBox_ct" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="23,62,0,0" SelectionChanged="comboBox_ct_SelectionChanged">
+            <TextBlock>Напитки</TextBlock>
+            <TextBlock>Молочные продукты</TextBlock>
+            <TextBlock>Фрукты</TextBlock>
+            <TextBlock>Овощи
+            </TextBlock>
+        </ComboBox>
+        <Label x:Name="label_Copy2" Content="Выберите категорию" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,31,0,0"/>
+        <ComboBox x:Name="comboBox_pr" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="23,149,0,0" SelectionChanged="comboBox_pr_SelectionChanged"/>
+        <Button x:Name="button1" Content="!" HorizontalAlignment="Left" Height="22" Margin="193,62,0,0" VerticalAlignment="Top" Width="30" Click="button1_Click"/>
+        <Button x:Name="button2" Content="!" HorizontalAlignment="Left" Height="22" Margin="193,149,0,0" VerticalAlignment="Top" Width="30" Click="button1_Click"/>
+        <Label x:Name="label_Copy3" Content="Введите вес продукта, гр" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,196,0,0"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="32,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
 
     </Grid>
 </Window>
