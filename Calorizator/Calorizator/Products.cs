@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calorizator
 {
+    [Serializable]
     class Products
     {
         private string name;

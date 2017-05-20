@@ -5,31 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calorizator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="517" Width="712">
+        Title="MainWindow" Height="517" Width="820.75">
     <Grid Margin="0,0,2,0">
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="191" Margin="244,31,0,0" VerticalAlignment="Top" Width="426" RenderTransformOrigin="0.5,0.5" MinColumnWidth="0" SelectionChanged="dataGrid_SelectionChanged">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="191" Margin="259,161,0,0" VerticalAlignment="Top" Width="530" RenderTransformOrigin="0.5,0.5" MinColumnWidth="0" SelectionChanged="dataGrid_SelectionChanged">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.167"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.622"/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
             <DataGrid.Columns>
 
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="button" Content="Добавить продукт" HorizontalAlignment="Left" Height="28" Margin="76,286,0,0" VerticalAlignment="Top" Width="122" Click="button_Click"/>
-        <Label x:Name="label" Content="Итого:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,231,0,0"/>
-        <Label x:Name="label_i" Content="" HorizontalAlignment="Left" Height="34" Margin="302,231,0,0" VerticalAlignment="Top" Width="368"/>
-        <Label x:Name="label_Copy1" Content="Выберите продукт" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,118,0,0"/>
-        <ComboBox x:Name="comboBox_ct" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="23,62,0,0" SelectionChanged="comboBox_ct_SelectionChanged">
+        <Button x:Name="button" Content="Добавить продукт" HorizontalAlignment="Left" Height="28" Margin="50,363,0,0" VerticalAlignment="Top" Width="122" Click="button_Click" MouseEnter="button_MouseEnter"/>
+        <Label x:Name="label" Content="Итого:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="263,363,0,0" FontSize="13.333"/>
+        <Label x:Name="label_i" Content="" HorizontalAlignment="Left" Height="34" Margin="329,363,0,0" VerticalAlignment="Top" Width="454"/>
+        <Label x:Name="label_Copy1" Content="Выберите продукт" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,225,0,0"/>
+        <ComboBox x:Name="comboBox_ct" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="21,178,0,0" SelectionChanged="comboBox_ct_SelectionChanged">
             <TextBlock>Напитки</TextBlock>
+            <TextBlock><Run Text="Каши"/></TextBlock>
             <TextBlock>Молочные продукты</TextBlock>
             <TextBlock>Фрукты</TextBlock>
             <TextBlock>Овощи
             </TextBlock>
         </ComboBox>
-        <Label x:Name="label_Copy2" Content="Выберите категорию" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,31,0,0"/>
-        <ComboBox x:Name="comboBox_pr" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="23,149,0,0" SelectionChanged="comboBox_pr_SelectionChanged"/>
-        <Button x:Name="button1" Content="!" HorizontalAlignment="Left" Height="22" Margin="193,62,0,0" VerticalAlignment="Top" Width="30" Click="button1_Click"/>
-        <Button x:Name="button2" Content="!" HorizontalAlignment="Left" Height="22" Margin="193,149,0,0" VerticalAlignment="Top" Width="30" Click="button1_Click"/>
-        <Label x:Name="label_Copy3" Content="Введите вес продукта, гр" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,196,0,0"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="32,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="label_Copy2" Content="Выберите категорию" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,147,0,0"/>
+        <ComboBox x:Name="comboBox_pr" HorizontalAlignment="Left" VerticalAlignment="Top" Width="184" Margin="21,251,0,0" SelectionChanged="comboBox_pr_SelectionChanged"/>
+        <Button x:Name="button1" HorizontalAlignment="Left" Height="22" Margin="183,178,0,0" VerticalAlignment="Top" Width="22
+                " Click="button1_Click">
+            <Image Source="/Images/check-mark.png" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-360.579"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+
+        <Label x:Name="label_Copy3" Content="Введите вес продукта, гр" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,294,0,0"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="23,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
+        <Button x:Name="button_del" Content="Удалить продукт" HorizontalAlignment="Left" Margin="50,433,0,0" VerticalAlignment="Top" Width="122" Height="28" Click="button_del_Click" MouseEnter="button_del_MouseEnter"/>
+        <Image x:Name="image" Source="/Images/Calorizator.png
+               " HorizontalAlignment="Left" Height="115" Margin="90,10,0,0" VerticalAlignment="Top" Width="115"/>
 
     </Grid>
 </Window>
