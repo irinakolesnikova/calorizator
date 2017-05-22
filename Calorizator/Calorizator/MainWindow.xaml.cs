@@ -35,10 +35,6 @@ namespace Calorizator
         }
 
 
-        private void comboBox_ct_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
@@ -95,52 +91,54 @@ namespace Calorizator
             s_c = 0;
             s_k = 0;
 
-            double weight = double.Parse(textBox.Text) / 100;
 
-            BinaryFormatter formatter = new BinaryFormatter();
-            List<Products> Products;
-
-            using (FileStream fs = new FileStream("../../base.dat", FileMode.OpenOrCreate))
             {
-                try
+                double weight = double.Parse(textBox.Text) / 100;
+                BinaryFormatter formatter = new BinaryFormatter();
+                List<Products> Products;
+
+                using (FileStream fs = new FileStream("../../base.dat", FileMode.OpenOrCreate))
                 {
-                    Products = (List<Products>)formatter.Deserialize(fs);
+                    try
+                    {
+                        Products = (List<Products>)formatter.Deserialize(fs);
+                    }
+                    catch
+                    {
+                        Products = new List<Products>();
+                    }
                 }
-                catch
+                foreach (Products p in Products)
                 {
-                    Products = new List<Products>();
+                    if (p.Name == comboBox_pr.Text)
+                    {
+                        p.Weight = int.Parse(textBox.Text);
+                        p.Protein *= weight;
+                        p.Oil *= weight;
+                        p.Carbs *= weight;
+                        p.Calories *= weight;
+
+                        Pr.Add(p);
+
+                    }
                 }
-            }
-            foreach (Products p in Products)
-            {
-                if (p.Name == comboBox_pr.Text)
+                dataGrid.ItemsSource = Pr;
+
+                textBox.Clear();
+
+
+                foreach (Products pr in Pr)
                 {
-                    p.Weight = int.Parse(textBox.Text);
-                    p.Protein *= weight;
-                    p.Oil *= weight;
-                    p.Carbs *= weight;
-                    p.Calories *= weight;
-
-                    Pr.Add(p);
-
+                    s_w += pr.Weight;
+                    s_p += pr.Protein;
+                    s_o += pr.Oil;
+                    s_c += pr.Carbs;
+                    s_k += pr.Calories;
                 }
+
+                label_i.Content = "на " + s_w.ToString() + " гр.  " + s_p.ToString() + " бел.  " + s_o.ToString() + " жир.  " + s_c.ToString() + " угл.  " + s_k.ToString() + " ккал  ";
+
             }
-            dataGrid.ItemsSource = Pr;
-
-            textBox.Clear();
-
-
-            foreach (Products pr in Pr)
-            {
-                s_w += pr.Weight;
-                s_p += pr.Protein;
-                s_o += pr.Oil;
-                s_c += pr.Carbs;
-                s_k += pr.Calories;
-            }
-
-            label_i.Content = "на " + s_w.ToString() + " гр.  " + s_p.ToString() + " бел.  " + s_o.ToString() + " жир.  " + s_c.ToString() + " угл.  " + s_k.ToString() + " ккал  ";
-
         }
 
         private void comboBox_pr_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -193,8 +191,64 @@ namespace Calorizator
         {
             button_del.Background = new SolidColorBrush(Colors.Pink);
         }
+
+
+        private void button_search_Click(object sender, RoutedEventArgs e)
+        {
+            List<Products> Search = new List<Products>();
+
+            for (int i = 0; i < Pr.Count; i++)
+            {
+                if (Pr[i].Name == textBox_search.Text)
+
+                {
+                    MessageBox.Show("Информация о продукте " + textBox_search.Text + ": на " + s_w.ToString() + " гр.  " + s_p.ToString() + " бел.  " + s_o.ToString() + " жир.  " + s_c.ToString() + " угл.  " + s_k.ToString() + " ккал  ");
+                    Search.Add(Pr[i]);
+                    return;
+
+                }
+
+
+                if (string.IsNullOrWhiteSpace(textBox_search.Text))
+
+                {
+                    MessageBox.Show("Введите название продукта!");
+                    return;
+
+                }
+
+
+            }
+            if (Search.Count == 0)
+            {
+                MessageBox.Show("Такого продукта нет! Попробуйте ещё раз");
+                return;
+            }
+        }
+
+        private void textBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+                MessageBox.Show("Некорректный ввод данных. Введите число", "Ошибка");
+            }
+        }
+
+        private void textBox_search_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsLetter(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+                MessageBox.Show("Некорректный ввод данных. Введите название продукта", "Ошибка");
+            }
+        }
     }
 }
+        
+    
+
+
 
             
 
